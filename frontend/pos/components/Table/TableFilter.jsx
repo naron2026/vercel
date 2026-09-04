@@ -1,12 +1,12 @@
 import { RiPlayLargeFill, RiPlayReverseLargeFill } from "react-icons/ri";
-import axios from "axios";
+import axios from "../../src/api";
 import { useEffect, useState, useContext } from "react";
 import QueryContext from "../../context/QueryContext";
 import useQuery from "../../hooks/useQuery";
 
 function TableFilter({ setData, endPoint }) {
   const { query, setQuery } = useContext(QueryContext);
-  const url = `http://localhost:8000/${endPoint}?search=${query.search}&limit=${query.limit}&page=${query.page}`;
+  const url = `/${endPoint}?search=${query.search}&limit=${query.limit}&page=${query.page}`;
   const { result, loading } = useQuery(url);
 
   function changeValue(name, value) {

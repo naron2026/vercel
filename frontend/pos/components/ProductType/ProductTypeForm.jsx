@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "../../src/api";
 import toast, { Toaster } from "react-hot-toast";
 
 function ProductTypeForm({ defaultData, handleView, isEdit }) {
@@ -14,7 +14,7 @@ function ProductTypeForm({ defaultData, handleView, isEdit }) {
         console.log(defaultData);
         //   put: update item
         const id = defaultData._id;
-        const url = "http://localhost:8000/producttype/" + id;
+        const url = "/producttype/" + id;
         const result = await axios.put(url, formData);
         toast.success("Item has been updated", {
           duration: 4000,
@@ -23,7 +23,7 @@ function ProductTypeForm({ defaultData, handleView, isEdit }) {
         handleView();
       } else {
         //   post: add new item
-        const url = "http://localhost:8000/producttype";
+        const url = "/producttype";
         const result = await axios.post(url, formData);
         toast.success("Item has been added", {
           duration: 4000,

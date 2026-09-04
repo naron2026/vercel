@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import QueryContext from "../context/QueryContext";
 
 import MasterPage from "../pages/MasterPage";
-import axios from "axios";
+import axios from "../src/api";
 import Table from "../components/Table/Table";
 import ProductTypeForm from "../components/ProductType/ProductTypeForm";
 import toast, { Toaster } from "react-hot-toast";
@@ -41,7 +41,7 @@ function ProductTypePage() {
   async function handleDelete(id) {
     try {
       const result = await axios.delete(
-        "http://localhost:8000/producttype/" + id,
+        "/producttype/" + id,
       );
       toast.success(result.data.message, {
         duration: 4000,

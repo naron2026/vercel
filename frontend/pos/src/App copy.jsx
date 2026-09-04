@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "./api";
 import Card from "../components/Card";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     async function getUser() {
       try {
-        const result = await axios.get("http://localhost:8000/product");
+        const result = await axios.get("/product");
         console.log(result);
         setProductData(result.data.data);
       } catch (error) {

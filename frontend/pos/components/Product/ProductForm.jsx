@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import QueryContext from "../../context/QueryContext";
-import axios from "axios";
+import axios from "../../src/api";
 
 function ProductForm({ endPoint, defaultData }) {
 
@@ -22,7 +22,7 @@ function ProductForm({ endPoint, defaultData }) {
   const [productType, setProductType] = useState([]);
 
   const fetchProductType = async () => {
-    const pro_url = `http://localhost:8000/producttype`;
+    const pro_url = "/producttype";
     const pro_result = await axios.get(pro_url);
     setProductType(pro_result.data.data);
 
@@ -50,12 +50,12 @@ function ProductForm({ endPoint, defaultData }) {
 
 
 
-    let url = `http://localhost:8000/${endPoint}`;
+    let url = `/${endPoint}`;
     let result = ""
 
     if (isEdit) {
       const id = defaultData._id;
-      url = `http://localhost:8000/${endPoint}/${id}`;
+      url = `/${endPoint}/${id}`;
       result = await axios.put(url, submitData);
     } else {
       result = await axios.post(url, submitData);

@@ -1,14 +1,14 @@
 import MasterPage from "../pages/MasterPage";
 import { useState, useEffect } from "react";
 import DashboardCard from "../components/DashboardCard";
-import axios from "axios";
+import axios from "../src/api";
 
 function Dashboard() {
   const [dashboardData, setdashboardData] = useState([]);
   useEffect(() => {
     async function getDashboardData() {
       try {
-        const result = await axios.get("http://localhost:8000/dashboard");
+        const result = await axios.get("/dashboard");
         console.log(result);
         setdashboardData(result.data.data);
       } catch (error) {

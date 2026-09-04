@@ -1,7 +1,7 @@
 import MasterPage from "../pages/MasterPage";
 import QueryContext from "../context/QueryContext";
 import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import axios from "../src/api";
 import toast, { Toaster } from "react-hot-toast";
 import Modal from "../components/Modal";
 
@@ -75,7 +75,7 @@ function Sale() {
   const getProductType = async () => {
     try {
       const resultProductType = await axios.get(
-        "http://localhost:8000/producttype",
+        "/producttype",
       );
       setProductType(resultProductType.data.data);
     } catch (error) {
@@ -85,7 +85,7 @@ function Sale() {
   const getProduct = async () => {
     try {
       const resultProduct = await axios.get(
-        "http://localhost:8000/sale?type=" + selectType,
+        "/sale?type=" + selectType,
       );
       setProduct(resultProduct.data.data);
     } catch (error) {
@@ -154,7 +154,7 @@ function Sale() {
                 >
                   <img
                     className="w-28"
-                    src={`http://localhost:8000/upload/${item.Picture}`}
+                    src={`${axios.defaults.baseURL}/upload/${item.Picture}`}
                   />
                   <p className="text-center">{item.ProductName}</p>
                   <p className="text-gray-600">{item.NumberInStock}</p>

@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Table from '../components/Table/Table';
 import ProductForm from "../components/Product/ProductForm";
 
-import axios from "axios";
+import axios from "../src/api";
 
 function Product() {
   const { setEndpoint, setColumns, setRows, showTable, setLabel, handleView, setIsEdit } =
@@ -17,7 +17,7 @@ function Product() {
   async function handleDelete(id) { }
 
   const deleteHandler = async (id) => {
-    const result = await axios.delete('http://localhost:8000/product/' + id)
+    const result = await axios.delete('/product/' + id)
     toast.success(result.data.message, { duration: 4000, position: 'top-right' })
   };
   const [defaultData, setDefaultData] = useState({})

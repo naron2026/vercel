@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import axios from "axios";
+import axios from "../../src/api";
 import toast, { Toaster } from "react-hot-toast";
 import QueryContext from "../../context/QueryContext";
 
@@ -14,7 +14,7 @@ function InvoiceForm() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const url = `http://localhost:8000/${endpoint}`;
+      const url = `/${endpoint}`;
       const result = axios.post(url, formData);
       toast.success(result.data.message);
     } catch (error) {
